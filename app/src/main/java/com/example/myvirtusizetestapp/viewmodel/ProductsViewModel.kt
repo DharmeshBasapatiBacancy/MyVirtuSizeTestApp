@@ -17,25 +17,13 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductsViewModel @Inject constructor(private val productsRepository: ProductsRepository): ViewModel() {
 
-    private val _searchProductsResponse = MutableLiveData<Resource<SearchProductsResponse>>()
-    val searchProductsResponse: LiveData<Resource<SearchProductsResponse>> = _searchProductsResponse
+    private val _searchProductsResponse = MutableLiveData<SearchProductsResponse>()
+    val searchProductsResponse: LiveData<SearchProductsResponse> = _searchProductsResponse
 
     fun getSearchedProducts(searchProductsRequest: SearchProductsRequest){
-        _searchProductsResponse.value = Resource.loading(null)
         viewModelScope.launch {
 
-            val apiResponse = productsRepository.getSearchedProducts(searchProductsRequest)
-            when(apiResponse.status){
-                Status.SUCCESS -> {
-                    Log.d(TAG, "getSearchedProducts: ON SUCCESS")
-                }
-                Status.ERROR -> {
-                    Log.d(TAG, "getSearchedProducts: ON ERROR")
-                }
-                Status.LOADING -> {
-                    Log.d(TAG, "getSearchedProducts: ON LOADING")
-                }
-            }
+            _searchProductsResponse.value = productsRepository.getSearchedProducts(searchProductsRequest)
 
         }
     }

@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        val daggerHiltVersion = "2.42"
+        val daggerHiltVersion = "2.48"
         classpath("com.google.dagger:hilt-android-gradle-plugin:$daggerHiltVersion")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

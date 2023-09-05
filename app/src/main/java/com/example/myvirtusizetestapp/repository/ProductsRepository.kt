@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class ProductsRepository @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getSearchedProducts(searchProductsRequest: SearchProductsRequest): Resource<SearchProductsResponse> {
+    suspend fun getSearchedProducts(searchProductsRequest: SearchProductsRequest): SearchProductsResponse {
         return apiService.getSearchedProductList(searchProductsRequest)
     }
 

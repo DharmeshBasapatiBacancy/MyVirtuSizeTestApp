@@ -1,3 +1,6 @@
 package com.example.myvirtusizetestapp.network.models.request
 
-class Measurements
+data class Measurements(
+    val bust: Int,
+    val height: Int
+)

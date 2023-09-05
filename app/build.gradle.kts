@@ -54,14 +54,16 @@ dependencies {
 
     val coroutinesFlowVersion = "1.6.4"
     val coilVersion = "2.0.0-rc03"
-    val daggerHiltVersion = "2.42"
+    val daggerHiltVersion = "2.48"
     val hiltCompilerVersion = "1.0.0"
     val lifecycleViewModelKTXVersion="2.6.1"
-    val roomVersion = "2.5.2"
     val sdpVersion = "1.0.6"
     val sspVersion = "1.0.6"
     val retrofitVersion = "2.9.0"
     val okhttpVersion = "4.9.3"
+    val kotlinVersion = "1.8.20"
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 
     //Coroutines & Flow
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesFlowVersion")
@@ -80,11 +82,6 @@ dependencies {
 
     //Lifecycle related
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelKTXVersion")
-
-    //Room
-    implementation("androidx.room:room-runtime:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion")
 
     //For using kotlin extensions of LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
