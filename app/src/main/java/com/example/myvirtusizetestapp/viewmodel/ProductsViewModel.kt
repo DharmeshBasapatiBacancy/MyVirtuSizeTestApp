@@ -22,13 +22,7 @@ class ProductsViewModel @Inject constructor(private val productsRepository: Prod
 
     fun getSearchedProducts(searchProductsRequest: SearchProductsRequest){
         viewModelScope.launch {
-
             _searchProductsResponse.value = productsRepository.getSearchedProducts(searchProductsRequest)
-
         }
-    }
-
-    companion object {
-        private const val TAG = "ProductsViewModel"
     }
 }

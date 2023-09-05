@@ -3,6 +3,9 @@
     <style name="Base.Theme.MyVirtuSizeTestApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/light_cream</item>
+        <item name="colorSecondary">@color/medium_cream</item>
+        <item name="android:statusBarColor">@color/dark_cream</item>
     </style>
 
     <style name="Theme.MyVirtuSizeTestApp" parent="Base.Theme.MyVirtuSizeTestApp" />

@@ -4,6 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ProductListActivity">
+    tools:context=".view.activities.ProductListActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:background="@color/light_cream"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/row_item_searched_product"
+        android:layout_margin="@dimen/_5sdp" />
+
+   <LinearLayout
+       android:id="@+id/lnrLayoutForButton"
+       android:layout_width="match_parent"
+       android:gravity="center_vertical|center_horizontal"
+       android:background="@color/white"
+       android:orientation="vertical"
+       android:visibility="visible"
+       android:layout_height="0dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+       <Button
+           android:id="@+id/btnSearchProducts"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="@dimen/_10sdp"
+           android:text="SIZYをはじめる"
+           android:textColor="@color/black"
+           android:textSize="@dimen/_15ssp"
+           android:visibility="visible"
+           android:background="@drawable/rounded_button_bg"
+           app:layout_constraintBottom_toBottomOf="parent" />
+
+       <ProgressBar
+           android:id="@+id/progressBar"
+           android:indeterminateTint="#e5aea2"
+           android:visibility="gone"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+   </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

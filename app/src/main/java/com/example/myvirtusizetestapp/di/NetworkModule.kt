@@ -1,5 +1,7 @@
 package com.example.myvirtusizetestapp.di
 
+import android.os.Build
+import com.example.myvirtusizetestapp.BuildConfig
 import com.example.myvirtusizetestapp.network.service.ApiService
 import dagger.Module
 import dagger.Provides
@@ -34,7 +36,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://product-recommendation.virtusize.jp/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
