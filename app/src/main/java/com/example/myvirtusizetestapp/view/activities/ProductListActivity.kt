@@ -5,8 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.myvirtusizetestapp.R
 import com.example.myvirtusizetestapp.databinding.ActivityProductListBinding
 import com.example.myvirtusizetestapp.network.models.SampleData.getSampleSearchProductsRequest
+import com.example.myvirtusizetestapp.utils.CommonUtils.isOnline
+import com.example.myvirtusizetestapp.utils.ToastUtil.showToast
+import com.example.myvirtusizetestapp.utils.ViewExtensions.gone
+import com.example.myvirtusizetestapp.utils.ViewExtensions.visible
 import com.example.myvirtusizetestapp.view.adapters.SearchProductsAdapter
 import com.example.myvirtusizetestapp.viewmodel.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +31,7 @@ class ProductListActivity : AppCompatActivity() {
         setupProductsRecyclerView()
 
         productsViewModel.searchProductsResponse.observe(this@ProductListActivity){
-            binding.lnrLayoutForButton.visibility = View.GONE
+            binding.lnrLayoutForButton.gone()
             searchProductsAdapter.submitList(it.hits)
         }
 
@@ -35,9 +40,13 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun setupClickListener() {
         binding.btnSearchProducts.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.btnSearchProducts.visibility = View.GONE
-            productsViewModel.getSearchedProducts(getSampleSearchProductsRequest())
+            if(isOnline(this)){
+                binding.progressBar.visible()
+                binding.btnSearchProducts.gone()
+                productsViewModel.getSearchedProducts(getSampleSearchProductsRequest())
+            }else{
+                showToast(this, getString(R.string.msg_no_internet_connection))
+            }
         }
     }
 

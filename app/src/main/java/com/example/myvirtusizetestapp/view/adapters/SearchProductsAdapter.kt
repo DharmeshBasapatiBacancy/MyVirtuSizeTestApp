@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.myvirtusizetestapp.R
 import com.example.myvirtusizetestapp.databinding.RowItemSearchedProductBinding
 import com.example.myvirtusizetestapp.network.models.response.Hit
 
@@ -48,15 +49,15 @@ class SearchProductsAdapter :
                 tvProductSize.text = item.sizeName
                 tvProductName.text = item.productName
                 tvBrandName.text = item.brand
-                tvProductPrice.text = "¥"+item.price
+                tvProductPrice.text = itemView.context.getString(R.string.label_yen_currency)+item.price
                 if(item.availableSizes.isNotEmpty()){
                     if(item.availableSizes.size == 1){
-                        tvSizeRange.text = "Size Range :" + item.availableSizes[0]
+                        tvSizeRange.text = itemView.context.getString(R.string.label_size_range) + item.availableSizes[0]
                     }else{
-                        tvSizeRange.text = "Size Range :" + item.availableSizes[0] + " - " + item.availableSizes[item.availableSizes.size-1]
+                        tvSizeRange.text = itemView.context.getString(R.string.label_size_range) + item.availableSizes[0] + " - " + item.availableSizes[item.availableSizes.size-1]
                     }
                 }
-                tvRecommendedSize.text = "Recommended Size :" + item.sizeName
+                tvRecommendedSize.text = itemView.context.getString(R.string.label_recommended_size) + item.sizeName
             }
         }
     }
